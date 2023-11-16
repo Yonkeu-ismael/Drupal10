@@ -1,18 +1,14 @@
 version: '3'
-
 services:
   drupal:
+    container_name: "drupal10"
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - 8080:80
     volumes:
-      - ./config/sites/default:/var/www/html/sites/default
-      - ./modules:/var/www/html/modules
-      - ./themes:/var/www/html/themes
-      - ./profiles:/var/www/html/profiles
-      - ./sites:/var/www/html/sites
+      - ./web:/var/www/html
     environment:
       - MYSQL_HOST=mysql
       - MYSQL_PORT=3306
@@ -24,8 +20,10 @@ services:
 
   mysql:
     image: mysql:5.7
+    container_name: "mysql5"
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=drupal
       - MYSQL_USER=drupal
       - MYSQL_PASSWORD=drupal
+
