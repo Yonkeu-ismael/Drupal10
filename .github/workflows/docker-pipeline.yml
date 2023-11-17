@@ -1,3 +1,7 @@
+# EMBC pipeline for CI/CD
+# By Ismael
+# On 17/11/2023
+# Email: ismaelyonkeu12@gmail.com
 name: Docker Pipeline
 
 on:
@@ -18,7 +22,7 @@ jobs:
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_PASSWORD }}
-        
+
     - name: Build and Push Docker image
       uses: docker/build-push-action@v2
       with:
